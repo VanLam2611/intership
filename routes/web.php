@@ -28,3 +28,17 @@ Route::get('/register', [App\Http\Controllers\RegisterController::class, 'getReg
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'postRegister']);
 //Logout
 Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'logout']);
+
+/**
+ * Protype
+ */
+//All protype page
+Route::get('/home/protype', [App\Http\Controllers\ProtypeController::class, 'getAllProtype']);
+//Product type creation page
+Route::get('home/protype/create', [App\Http\Controllers\ProtypeController::class, 'createPage']);
+Route::post('home/protype/create', [App\Http\Controllers\ProtypeController::class, 'createProtype']);
+//Product type update page
+Route::get('home/protype/update/{type_id}', [App\Http\Controllers\ProtypeController::class, 'updatePage']);
+Route::post('home/protype/update/{type_id}', [App\Http\Controllers\ProtypeController::class, 'updateProtype']);
+//Delete type product
+Route::get('home/protype/delete/{type_id}', [App\Http\Controllers\ProtypeController::class, 'deleteProtype']);
