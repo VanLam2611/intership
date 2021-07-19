@@ -27,6 +27,4 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'postLogin']
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'getRegister']);
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'postRegister']);
 //Logout
-Route::get('/register', [App\Http\Controllers\RegisterController::class, 'getRegister']);
-//Login
 Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'logout']);
