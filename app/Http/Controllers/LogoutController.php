@@ -14,10 +14,9 @@ class LogoutController extends Controller
     /**Logout user*/
     public function logout()
     {
-        Session::put('user_id', null);
-        Session::put('username', null);
-        Session::put('email', null);
-        return Redirect::to('/home/login');
+        if(Auth::logout()){
+            return Redirect::to('login');
+        }
     }
 
 }

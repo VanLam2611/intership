@@ -12,19 +12,21 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Main page
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
+
 /*Check your account when you log in*/
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Login
-Route::get('home/login', [App\Http\Controllers\LoginController::class, 'getLogin']);
-Route::post('home/login', [App\Http\Controllers\LoginController::class, 'postLogin']);
-//Logout 
-Route::get('home/logout',[App\Http\Controllers\LogoutController::class, 'logout']);
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'getLogin']);
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'postLogin']);
 //Register
-Route::get('home/register',[App\Http\Controllers\RegisterController::class, 'getRegister']);
-Route::post('home/register', [App\Http\Controllers\RegisterController::class, 'postRegister']);
+Route::get('/register', [App\Http\Controllers\RegisterController::class, 'getRegister']);
+Route::post('/register', [App\Http\Controllers\RegisterController::class, 'postRegister']);
+//Logout
+Route::get('/register', [App\Http\Controllers\RegisterController::class, 'getRegister']);
+//Login
+Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'logout']);
