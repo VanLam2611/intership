@@ -71,6 +71,7 @@ return [
             'query' => [
                 // 'user' => App\GraphQL\Query\UserQuery::class,
                 App\GraphQL\Queries\UsersQuery::class,
+                App\GraphQL\Queries\ProfileQuery::class,
             ],
             'mutation' => [
                 //ExampleMutation::class,
@@ -87,6 +88,7 @@ return [
     // facade like this: GraphQL::type('user')
     'types' => [
         App\GraphQL\Types\UsersType::class,
+        App\GraphQL\Types\ProfileType::class,
         //'Profile' => App\GraphQL\Type\ProfileType::class,
     ],
 

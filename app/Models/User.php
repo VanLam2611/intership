@@ -15,6 +15,9 @@ class User extends Authenticatable
     public $primaryKey = 'id';
     public $timestamps = false;
 
+    public function profile(){
+        return $this->hasOne('App\Models\Profile','user_id','id');
+    }
     /**
      * The attributes that are mass assignable.
      *
