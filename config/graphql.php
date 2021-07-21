@@ -69,7 +69,8 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'user' => App\GraphQL\Query\UserQuery::class,
+                // 'user' => App\GraphQL\Query\UserQuery::class,
+                App\GraphQL\Queries\UsersQuery::class,
             ],
             'mutation' => [
                 //ExampleMutation::class,
@@ -85,7 +86,7 @@ return [
     // The types available in the application. You can then access it from the
     // facade like this: GraphQL::type('user')
     'types' => [
-        App\GraphQL\Type\UserType::class,
+        App\GraphQL\Types\UsersType::class,
         //'Profile' => App\GraphQL\Type\ProfileType::class,
     ],
 

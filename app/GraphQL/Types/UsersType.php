@@ -6,25 +6,25 @@ use App\Models\User;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
-class UserType extends GraphQLType
+class UsersType extends GraphQLType
 {
     protected $attributes = [
-        'name'          => 'User',
-        'description'   => 'A user',
-        // Note: only necessary if you use `SelectFields`
-        'model'         => User::class,
+        'name' => 'Users',
+        'description' => 'A type',
+        'model' => User::class,
     ];
     
+    // Định nghĩa field của type
     public function fields(): array
     {
         return [
             'id' => [
                 'type' => Type::nonNull(Type::int()),
-                'description' => 'The id of the user',
+                'description' => 'The id of the user'
             ],
             'email' => [
                 'type' => Type::string(),
-                'description' => 'The email of user',
+                'description' => 'The email of user'
             ],
             'name' => [
                 'type' => Type::string(),
@@ -32,9 +32,7 @@ class UserType extends GraphQLType
             ],
         ];
     }
-
-    // You can also resolve a field by declaring a method in the class
-    // with the following format resolve[FIELD_NAME]Field()
+    
     protected function resolveEmailField($root, $args)
     {
         return strtolower($root->email);
