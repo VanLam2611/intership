@@ -69,12 +69,13 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                // 'user' => App\GraphQL\Query\UserQuery::class,
-                App\GraphQL\Queries\UsersQuery::class,
-                App\GraphQL\Queries\ProfileQuery::class,
+                // App\GraphQL\Queries\UsersQuery::class,
+                // App\GraphQL\Queries\ProfileQuery::class,
             ],
             'mutation' => [
-                //ExampleMutation::class,
+                'register' => App\GraphQL\Mutations\RegisterMutation::class,
+                'login' => App\GraphQL\Mutations\LoginMutation::class,
+                //'temp' => App\GraphQL\Mutations\Temp::class,
             ],
             'types' => [
                 // App\GraphQL\Type\UserType::class,
@@ -82,6 +83,19 @@ return [
             'middleware' => [],
             'method' => ['get', 'post'],
         ],
+        'secret' => [
+            'query' => [
+                App\GraphQL\Queries\UsersQuery::class,
+                App\GraphQL\Queries\ProfileQuery::class,
+            ],
+            'mutation' => [
+                'insert' => App\GraphQL\Mutations\InsertMutation::class,
+                'update' => App\GraphQL\Mutations\UpdateMutation::class,
+                'delete' => App\GraphQL\Mutations\DeleteMutation::class,
+            ],
+            'middleware' => ['auth:api'],
+            'method' => ['get', 'post'],
+        ]
     ],
 
     // The types available in the application. You can then access it from the
