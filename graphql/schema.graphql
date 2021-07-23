@@ -1,0 +1,53 @@
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
+    users: [User!]! @all
+    user(id: ID @eq): User @find
+    protypes: [Protype!]! @all
+    protype(id: ID @eq): Protype @find
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Protype{
+    type_id: ID!
+    type_name: String!
+}
+
+### ROOT MUTATION ###
+
+type Mutation {
+  login(
+    email: String! 
+    password: String!
+  ): String @field(resolver: "LoginMutation@resolve")
+  register(
+    name: String!
+    email: String! @rules(apply: ["email", "unique:users"])
+    password: String! @bcrypt @rules(apply: ["min:6"])
+  ): User @create
+}
+
+type Mutation {
+  createProtype(type_name: String!): ProType 
+    @field(resolver: "InsertMutation@resolve")
+    #check user
+    @middleware(checks: ["auth:api"])
+  updateProtype(
+      type_id: Int! 
+      type_name: String!): ProType 
+    @field(resolver: "UpdateMutation@resolve")
+    @middleware(checks: ["auth:api"])
+  deleteProtype(
+      type_id: Int!): ProType 
+    @field(resolver: "DeleteMutation@resolve")
+    @middleware(checks: ["auth:api"])
+}

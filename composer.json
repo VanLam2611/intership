@@ -13,8 +13,9 @@
         "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "rebing/graphql-laravel": "^7.2",
-        "folklore/graphql": "~1.0.0"
+        "mll-lab/laravel-graphql-playground": "^2.5",
+        "nuwave/lighthouse": "^5.16",
+        "rebing/graphql-laravel": "^7.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
