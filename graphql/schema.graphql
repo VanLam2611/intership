@@ -37,15 +37,15 @@ type Mutation {
 }
 
 type Mutation {
-  createProtype(type_name: String!): TypeProduct @auth
+  createProtype(type_name: String!): TypeProduct
     @field(resolver: "InsertMutation@resolve")
   updateProtype(
       type_id: Int! 
-      type_name: String!): TypeProduct  @auth
+      type_name: String!): TypeProduct
     @field(resolver: "UpdateMutation@resolve")
     #@middleware(checks: ["auth:api"])
   deleteProtype(
-      type_id: Int!): TypeProduct  @auth
+      type_id: Int!): TypeProduct
     @field(resolver: "DeleteMutation@resolve")
     #@middleware(checks: ["auth:api"])
 }
